@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>input</title>
-
-
+        <title>Accepting inout from a web page</title>
     </head>
+
     <body>
         <h1><label>Feed Me My Snack</label></h1><br>
-        Enter your age<input/><br>
+        Enter your age<input id="inp_age"/><br>
         Enter your Max age <input/><br>
         Enter number of snacks<input/> <br>
         <br>
         Result:
         <br><br>
-        <button>Accept Input</button><br>
+        <button id="btn_input">Accept Input</button><br>
+        <script>
+            const age = document.getElementByID("inp_age");
+            const btn = document.getElementByID("btn_input");
+
+        </script>
+
+
     </body>
 
 </html>
