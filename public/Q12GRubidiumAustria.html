@@ -9,17 +9,27 @@
     Enter your Tip<input id="inp_tip"/><br>
     Enter your Service Charge<input id="inp_servicecharge"/><br>
     <button id="btn_input">Accept Input</button><br>
+    <p id="result"></p> <br><br>
+
+
+    <footer> 
+        References: <br> Bro Code. (2023, October 15). How to accept JavaScript USER INPUT in 5 minutes 💬 [Video]. YouTube. https://www.youtube.com/watch?v=JeXqaKeJSRI
+    </footer>
 
     <script>
         function totalMeal() {
               // place your JS code here
-              const Meal price = document.getElementByID("inp_mealprice");
-              const Tip = document.getElementByID("btn_tip");
-              const Service Charge = document.getElementByID("btn_tip");
-            
-         
+
+              const mealPrice = document.getElementById("inp_mealprice").value*1;
+              const tip = document.getElementById("inp_tip").value*1;
+              const serviceCharge = document.getElementById("inp_servicecharge").value*1;
+              //using .value to get the input values and multiplying by 1 to convert them to numbers
+                var totalCost = mealPrice + tip + (serviceCharge / 100 * mealPrice);
+         document.getElementById("result").textContent="Total Meal: " + totalCost.toFixed(2);
+         //changing the text content of the result paragraph to display the total cost
         }
-        totalMeal()
+        
+        document.getElementById("btn_input").onclick = totalMeal;
     </script>
 
 </body>
