@@ -1,0 +1,97 @@
+<title>Guess My Word -- Samsamsam</title>
+<style> 
+
+  body {
+    background-color: rgb(203, 238, 241);
+    text-align: center;
+    margin-top: 100px;
+  }
+  h1 {
+    margin-top: 50px;
+    margin-right: 290px;
+    color: rgb(33, 58, 60);
+    
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  #wordDisplay {
+    
+    font-size: 24px;
+    letter-spacing: 10px;
+  }
+  #message {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 10px;
+    margin-right: 245px;
+    font-size: 18px;
+  }
+  #attempts {
+    margin-top: 10px;
+    margin-right: 400px;
+    font-size: 16px;
+  }
+  button {
+    margin: 10px 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgb(33, 58, 60);
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+</style>
+<body>
+<h1>Guess My Word</h1>
+<p id="attempts">Attempts left: 7</p>
+<p id="wordDisplay"></p>
+<input type="text" id="guessInput" maxlength="1">
+<button onclick="makeGuess()">Guess</button> <button id="playAgainBtn" onclick="resetGame()" >Play again !!</button>
+<p id="message"></p>
+
+</body>
+
+
+
+<script>
+  let secretWord = ["s", "p", "o", "n","t", "a", "n", "e","o","u","s","s","a","m"];
+  let guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_","_","_","_","_","_","_"];
+  let attemptsleft = 7;
+
+  document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+
+  function resetGame() {
+    guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_","_","_","_","_","_","_"];
+    attemptsleft = 7;
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+    document.getElementById("attempts").textContent = "Attempts left: " + attemptsleft;
+    document.getElementById("message").textContent = "";
+    document.getElementById("guessInput").disabled = false;
+  }
+
+  function makeGuess() {
+    let guess = document.getElementById("guessInput").value.toLowerCase();
+    let correct = false;
+
+    for (let i = 0; i < secretWord.length; i++) {
+      if (secretWord[i] === guess) {
+        guessedWord[i] = guess;
+        correct = true;
+      }
+    }
+    if (!correct) {
+      attemptsleft--;
+    }
+
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+    let messageEl = document.getElementById("message");
+    if(correct) {
+      messageEl.textContent = "Good guess!😼😼";
+      messageEl.style.color = "green";
+    } else {
+      messageEl.textContent = "Wrong guess!🙀🙀";
+      messageEl.style.color = "red";
+    }
+    document.getElementById("attempts").textContent = "Attempts left: " + attemptsleft;
+    document.getElementById("guessInput").value = "";
+  }
+</script>
